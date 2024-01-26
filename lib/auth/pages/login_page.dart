@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'home_page.dart';
+import 'package:healthapp/auth/data/auth_service.dart';
 import 'signup_page.dart';
 
 class LoginPage extends StatefulWidget {
@@ -11,6 +11,20 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final AuthService _authService = AuthService();
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+
+  Future<void> _login() async {
+    if (formKey.currentState!.validate()) {}
+    ;
+    await _authService.signIn(
+      _emailController.text,
+      _passwordController.text,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,9 +33,10 @@ class _LoginPageState extends State<LoginPage> {
         children: [
           Column(
             children: [
-              const SizedBox(height: 135),
-              Image.asset('assets/login.png'),
-              const TextField(
+              const SizedBox(height: 200),
+              // Image.asset('assets/login.png'),
+              TextFormField(
+                controller: _emailController,
                 decoration: InputDecoration(
                   hintText: 'Email',
                   hintStyle: TextStyle(fontFamily: 'Montserrat'),
@@ -34,7 +49,8 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
               const SizedBox(height: 16.05),
-              const TextField(
+              TextFormField(
+                controller: _passwordController,
                 obscureText: true,
                 decoration: InputDecoration(
                   hintText: 'Password',
@@ -64,15 +80,12 @@ class _LoginPageState extends State<LoginPage> {
               ]),
               const SizedBox(height: 24),
               ElevatedButton(
-                onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const HomePage()));
-                },
+                onPressed: _login,
                 style: ButtonStyle(
                   minimumSize:
-                  MaterialStateProperty.all<Size>(const Size(354.0, 52.0)),
+                      MaterialStateProperty.all<Size>(const Size(354.0, 52.0)),
                   backgroundColor:
-                  MaterialStateProperty.all<Color>(Colors.blue),
+                      MaterialStateProperty.all<Color>(Colors.blue),
                 ),
                 child: const Text(
                   'Login',
@@ -160,19 +173,20 @@ class _LoginPageState extends State<LoginPage> {
                     'Dont have an acount?',
                   ),
                   TextButton(
-                      onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const SignupPage(),
-                        ));
-                      },
-                      child: const Text(
-                        'Signup',
-                        style: TextStyle(
-                            fontFamily: 'Montserrat',
-                            fontWeight: FontWeight.bold),
-                      ))
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const SignupPage(),
+                      ));
+                    },
+                    child: const Text(
+                      'Signup',
+                      style: TextStyle(
+                          fontFamily: 'Montserrat',
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
                 ],
-              )
+              ),
             ],
           ),
         ],

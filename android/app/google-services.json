@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "111802798192",
+    "project_id": "clinic-appointment-f8d40",
+    "storage_bucket": "clinic-appointment-f8d40.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:111802798192:android:e662fb640da16bcdf1e4b5",
+        "android_client_info": {
+          "package_name": "com.example.clinic_appointment_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYEhqLFjAhVB8NepWc5_vspQDl-BwaMDA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

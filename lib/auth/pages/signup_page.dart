@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
-import 'login_page.dart';
+import 'package:healthapp/auth/data/auth_service.dart';
+import 'package:healthapp/auth/pages/status_page.dart';
 
 class SignupPage extends StatefulWidget {
   const SignupPage({super.key});
@@ -12,6 +12,31 @@ class SignupPage extends StatefulWidget {
 }
 
 class _SignupPageState extends State<SignupPage> {
+  final AuthService _authService = AuthService();
+
+  Future<void> _register() async {
+    await _authService.register(
+      _emailController.text,
+      _passwordController.text,
+      _fullnameController.text,
+    );
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => const StatusPage()));
+  }
+
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _fullnameController = TextEditingController();
+
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    _fullnameController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,14 +44,15 @@ class _SignupPageState extends State<SignupPage> {
           padding: const EdgeInsets.only(left: 30, right: 30),
           children: [
             Column(children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 32, top: 135),
-                child: Image.asset(
-                  'assets/signup.png',
-                ),
-              ),
+              // Padding(
+              //   padding: const EdgeInsets.only(left: 32, top: 135),
+              //   child: Image.asset(
+              //     'assets/signup.png',
+              //   ),
+              // ),
               const SizedBox(height: 64),
-              const TextField(
+              TextField(
+                controller: _fullnameController,
                 decoration: InputDecoration(
                     hintText: "Full Name",
                     hintStyle: TextStyle(fontFamily: "Montserrat"),
@@ -38,7 +64,8 @@ class _SignupPageState extends State<SignupPage> {
                         ))),
               ),
               const SizedBox(height: 24),
-              const TextField(
+              TextField(
+                controller: _emailController,
                 decoration: InputDecoration(
                     hintText: "Email",
                     hintStyle: TextStyle(fontFamily: "Montserrat"),
@@ -50,7 +77,7 @@ class _SignupPageState extends State<SignupPage> {
                         ))),
               ),
               const SizedBox(height: 24),
-              const TextField(
+              TextField(
                 decoration: InputDecoration(
                     hintText: "Address",
                     hintStyle: TextStyle(fontFamily: "Montserrat"),
@@ -62,7 +89,8 @@ class _SignupPageState extends State<SignupPage> {
                         ))),
               ),
               const SizedBox(height: 24),
-              const TextField(
+              TextField(
+                controller: _passwordController,
                 obscureText: true,
                 decoration: InputDecoration(
                     hintText: "Password",
@@ -99,15 +127,12 @@ class _SignupPageState extends State<SignupPage> {
               ),
               const SizedBox(height: 41),
               ElevatedButton(
-                onPressed: () {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => LoginPage()));
-                },
+                onPressed: _register,
                 style: ButtonStyle(
                   minimumSize:
-                  MaterialStateProperty.all<Size>(const Size(354.0, 52.0)),
+                      MaterialStateProperty.all<Size>(const Size(354.0, 52.0)),
                   backgroundColor:
-                  MaterialStateProperty.all<Color>(Colors.blue),
+                      MaterialStateProperty.all<Color>(Colors.blue),
                 ),
                 child: const Text(
                   'Register',

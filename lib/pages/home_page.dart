@@ -27,7 +27,7 @@ class _HomePageState extends State<HomePage> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text("Hi, Bishal!"),
+                const Text("Hi, Nishant!"),
                 Text(
                   'How are you feeling today?',
                   style: Theme.of(context).textTheme.bodySmall,
@@ -62,7 +62,7 @@ class _HomePageState extends State<HomePage> {
 
           //Nearby doctors
           Text(
-            'Nearby Docrors',
+            'Nearby Doctors',
             style: Theme.of(context).textTheme.headline6,
           ),
           const SizedBox(height: 15),
