@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:healthapp/auth/data/auth_service.dart';
+import 'package:healthapp/auth/pages/login_page.dart';
 import 'package:healthapp/auth/pages/status_page.dart';
 
 class SignupPage extends StatefulWidget {
@@ -18,7 +19,8 @@ class _SignupPageState extends State<SignupPage> {
     await _authService.register(
       _emailController.text,
       _passwordController.text,
-      _fullnameController.text,
+      _fullNameController.text,
+      _addressController.text,
     );
     Navigator.pushReplacement(
         context, MaterialPageRoute(builder: (context) => const StatusPage()));
@@ -26,14 +28,15 @@ class _SignupPageState extends State<SignupPage> {
 
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _fullnameController = TextEditingController();
+  final TextEditingController _fullNameController = TextEditingController();
+  final TextEditingController _addressController = TextEditingController();
 
 
   @override
   void dispose() {
     _emailController.dispose();
     _passwordController.dispose();
-    _fullnameController.dispose();
+    _fullNameController.dispose();
     super.dispose();
   }
 
@@ -52,7 +55,7 @@ class _SignupPageState extends State<SignupPage> {
               // ),
               const SizedBox(height: 64),
               TextField(
-                controller: _fullnameController,
+                controller: _fullNameController,
                 decoration: InputDecoration(
                     hintText: "Full Name",
                     hintStyle: TextStyle(fontFamily: "Montserrat"),
@@ -78,6 +81,7 @@ class _SignupPageState extends State<SignupPage> {
               ),
               const SizedBox(height: 24),
               TextField(
+                controller: _addressController,
                 decoration: InputDecoration(
                     hintText: "Address",
                     hintStyle: TextStyle(fontFamily: "Montserrat"),
@@ -215,7 +219,7 @@ class _SignupPageState extends State<SignupPage> {
                   TextButton(
                       onPressed: () {
                         Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => const SignupPage()));
+                            builder: (context) => const LoginPage()));
                       },
                       child: const Text(
                         "Login",

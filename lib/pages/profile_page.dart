@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:healthapp/auth/data/auth_service.dart';
 import 'package:healthapp/models/profile_model.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -30,7 +31,7 @@ class ProfilePage extends StatelessWidget {
             Column(children: const [
               CircleAvatar(
                 radius: 50,
-                backgroundImage: AssetImage('assets/bishal.jpeg'),
+                backgroundImage: AssetImage('assets/myimage.png'),
               ),
               SizedBox(height: 10),
               Text(
@@ -124,18 +125,26 @@ class ProfilePage extends StatelessWidget {
                   itemCount: profileCompletionCards.length),
             ),
             const SizedBox(height: 35),
-            ...List.generate(
-              customListTiles.length,
-                  (index) => Card(
-                elevation: 4,
-                shadowColor: Colors.black12,
-                child: ListTile(
-                  leading: Icon(customListTiles[index].icon),
-                  title: Text(customListTiles[index].title),
+            ListTile(
+              onTap: () {
+                AuthService().signOut();
+              },
+                  leading: Icon(Icons.logout),
+                  title: Text('Logout'),
                   trailing: Icon(Icons.chevron_right),
-                ),
-              ),
             ),
+            // ...List.generate(
+            //   customListTiles.length,
+            //       (index) => Card(
+            //     elevation: 4,
+            //     shadowColor: Colors.black12,
+            //     child: ListTile(
+            //       leading: Icon(customListTiles[index].icon),
+            //       title: Text(customListTiles[index].title),
+            //       trailing: Icon(Icons.chevron_right),
+            //     ),
+            //   ),
+            // ),
           ],
         ),
     );

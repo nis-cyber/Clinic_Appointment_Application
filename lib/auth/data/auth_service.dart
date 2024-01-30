@@ -1,10 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:healthapp/auth/pages/login_page.dart';
+import 'package:healthapp/main.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+  final _userDb = FirebaseFirestore.instance.collection('users');
 
   Future<User?> getCurrentUser() async {
     return _auth.currentUser;
@@ -13,7 +17,8 @@ class AuthService {
   Future<void> register(
     String email,
     String password,
-    String fullname,
+    String address,
+    String fullName,
   ) async {
     try {
       UserCredential userCredential =
@@ -21,10 +26,10 @@ class AuthService {
         email: email.trim(),
         password: password.trim(),
       );
-      await _firestore.collection('users').doc(userCredential.user!.uid).set({
+      await _userDb.add({
         'email': email.trim(),
-        'password': password.trim(),
-        'fullname': fullname.trim(),
+        'fullName': fullName.trim(),
+        'address': address.trim(),
       });
     } catch (e) {
       if (kDebugMode) {
@@ -47,5 +52,11 @@ class AuthService {
 
   Future<void> signOut() async {
     await _auth.signOut();
+    globalNavigator.currentState?.pushAndRemoveUntil(
+      MaterialPageRoute(
+        builder: (_) => const LoginPage(),
+      ),
+      (route) => false,
+    );
   }
 }

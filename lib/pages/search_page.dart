@@ -82,6 +82,8 @@ class _SearchScreenState extends State<SearchScreen> {
 
   // Fetch doctor list based on the search query
   void fetchDoctorList(String query) {
+
+
     // Implement your logic to fetch the doctor list based on the search query
     // Update the 'doctorList' and the UI accordingly
   }

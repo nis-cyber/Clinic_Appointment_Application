@@ -24,7 +24,7 @@ class NearbyDoctors extends StatelessWidget {
                           image: AssetImage(nearbyDoctors[index].profile),
                           fit: BoxFit.cover)),
                 ),
-                const SizedBox(width: 10),
+                const SizedBox(width: 40),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

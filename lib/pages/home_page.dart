@@ -1,6 +1,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:healthapp/pages/doctor_page.dart';
 import 'package:healthapp/widgets/health_needs.dart';
 import 'package:healthapp/widgets/nearby_doctor.dart';
 import 'package:healthapp/widgets/upcoming_card.dart';
@@ -21,6 +22,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
@@ -61,9 +63,20 @@ class _HomePageState extends State<HomePage> {
           const SizedBox(height: 30),
 
           //Nearby doctors
-          Text(
-            'Nearby Doctors',
-            style: Theme.of(context).textTheme.headline6,
+          ListTile(
+            leading: Text(
+              'Nearby Doctors',
+              style: Theme.of(context).textTheme.headline6,
+            ),
+            trailing: InkWell(
+              onTap: (){
+                Navigator.of(context).push(MaterialPageRoute(builder: (_)=> DoctorPage(
+
+                )));
+              },
+              child: Icon(Icons.arrow_forward_ios,
+              size: 18,),
+            ),
           ),
           const SizedBox(height: 15),
           const NearbyDoctors(),

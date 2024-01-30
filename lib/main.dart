@@ -10,13 +10,16 @@ import 'package:healthapp/pages/profile_page.dart';
 import 'package:healthapp/pages/search_page.dart';
 import 'firebase_options.dart';
 
-void main() {
+void main() async{
   WidgetsFlutterBinding.ensureInitialized();
-  Firebase.initializeApp(
+  await Firebase.initializeApp(
     options: DefaultFirebaseOptions.android,
   );
   runApp(MyApp());
 }
+
+
+final GlobalKey<NavigatorState> globalNavigator = GlobalKey<NavigatorState>();
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -36,10 +39,10 @@ class MyApp extends StatelessWidget {
                 Theme.of(context).textTheme),
             useMaterial3: true,
           ),
-          home: child,
+          home: StatusPage(),
+          navigatorKey: globalNavigator,
         );
       },
-      child: StatusPage(),
     );
   }
 }
@@ -54,7 +57,7 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   final _pages = [
     const HomePage(),
-    const AppointmentPage(),
+    AppointmentPage(),
     const SearchScreen(),
     const ProfilePage(),
   ];
