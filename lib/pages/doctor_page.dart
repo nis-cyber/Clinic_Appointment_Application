@@ -57,7 +57,7 @@ class DoctorPage extends StatelessWidget {
                             height: 5,
                           ),
                           Text(
-                            'Lets add about the doctor speciality here jhgjhg jhgjhg jgjhg jhgjhg jhgjhg jhgjhg jhgjhg',
+                            'General Physician',
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
@@ -68,7 +68,7 @@ class DoctorPage extends StatelessWidget {
                             height: 3,
                           ),
                           Text(
-                            'MD',
+                            'MD, MBBS, DM',
                             style: TextStyle(
                               color: Color(0xff1E1C61).withOpacity(0.7),
                             ),

@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
 import '../models/doctor_model.dart';
-// class MessagePage extends StatelessWidget {
-//   const MessagePage({super.key});
+
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({Key? key}) : super(key: key);

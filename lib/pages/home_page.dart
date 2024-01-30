@@ -2,6 +2,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:healthapp/pages/doctor_page.dart';
+import 'package:healthapp/pages/notification_page.dart';
 import 'package:healthapp/widgets/health_needs.dart';
 import 'package:healthapp/widgets/nearby_doctor.dart';
 import 'package:healthapp/widgets/upcoming_card.dart';
@@ -40,7 +41,11 @@ class _HomePageState extends State<HomePage> {
         ),
         actions: [
           IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(builder: (_)=> NotificationPage(
+
+                )));
+              },
               icon: const Icon(Ionicons.notifications_outline)),
           IconButton(
               onPressed: () {}, icon: const Icon(Ionicons.search_outline))
