@@ -2,7 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:healthapp/auth/pages/status_page.dart';
+import 'package:healthapp/features/auth/pages/status_page.dart';
 import 'package:healthapp/models/bottom_nav_bar.dart';
 import 'package:healthapp/pages/appointment_page.dart';
 import 'package:healthapp/pages/home_page.dart';
@@ -10,14 +10,13 @@ import 'package:healthapp/pages/profile_page.dart';
 import 'package:healthapp/pages/search_page.dart';
 import 'firebase_options.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.android,
   );
   runApp(MyApp());
 }
-
 
 final GlobalKey<NavigatorState> globalNavigator = GlobalKey<NavigatorState>();
 
@@ -57,7 +56,7 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   final _pages = [
     const HomePage(),
-    AppointmentPage(),
+    const AppointmentPage(),
     const SearchScreen(),
     const ProfilePage(),
   ];

@@ -1,32 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:healthapp/auth/data/auth_service.dart';
-import 'package:healthapp/auth/pages/status_page.dart';
-import 'package:healthapp/pages/home_page.dart';
-import 'signup_page.dart';
+import 'package:healthapp/features/auth/data/auth_data.dart';
+import 'package:healthapp/features/auth/pages/signup_page.dart';
+import 'package:healthapp/helper/helper_function.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+  const LoginPage({
+    super.key,
+  });
 
   @override
   State<LoginPage> createState() => _LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final AuthService _authService = AuthService();
   final formKey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   bool isObscured = true;
 
-  Future<void> _login() async {
-    print('+++++++++++++++++++++++');
-    Navigator.of(context).push(MaterialPageRoute(builder: (_)=> StatusPage()));
-
-    await _authService.signIn(
-      _emailController.text.trim(),
-      _passwordController.text.trim(),
+  // register method
+  void login() async {
+    // show loading
+    showDialog(
+      context: context,
+      builder: (context) => const Center(
+        child: CircularProgressIndicator(),
+      ),
     );
+
+    await AuthData.login(
+            email: _emailController.text.trim(),
+            password: _passwordController.text.trim())
+        .then((value) {
+      Navigator.of(context).pop();
+      displayMessageToUser(value, context);
+    });
   }
 
   @override
@@ -62,7 +71,7 @@ class _LoginPageState extends State<LoginPage> {
                     hintText: 'Password',
                     hintStyle: TextStyle(fontFamily: 'Montserrat'),
                     suffixIcon: IconButton(
-                      onPressed: (){
+                      onPressed: () {
                         setState(() {
                           isObscured = !isObscured;
                         });
@@ -70,7 +79,9 @@ class _LoginPageState extends State<LoginPage> {
                       icon: Align(
                         widthFactor: 1.0,
                         heightFactor: 1.0,
-                        child: isObscured ? Icon(Icons.remove_red_eye) : Icon(Icons.visibility_off),
+                        child: isObscured
+                            ? Icon(Icons.remove_red_eye)
+                            : Icon(Icons.visibility_off),
                       ),
                     ),
                     border: OutlineInputBorder(
@@ -93,14 +104,14 @@ class _LoginPageState extends State<LoginPage> {
                 ]),
                 const SizedBox(height: 24),
                 ElevatedButton(
-                  onPressed: (){
+                  onPressed: () {
                     if (formKey.currentState!.validate()) {
-                      _login();
+                      login();
                     }
                   },
                   style: ButtonStyle(
-                    minimumSize:
-                        MaterialStateProperty.all<Size>(const Size(354.0, 52.0)),
+                    minimumSize: MaterialStateProperty.all<Size>(
+                        const Size(354.0, 52.0)),
                     backgroundColor:
                         MaterialStateProperty.all<Color>(Colors.blue),
                   ),
@@ -159,9 +170,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 const SizedBox(height: 16.04),
                 ElevatedButton(
-                  onPressed: () {
-
-                  },
+                  onPressed: () {},
                   style: ElevatedButton.styleFrom(
                     side: const BorderSide(width: 3, color: Colors.blue),
                     minimumSize: const Size(354, 59.95),

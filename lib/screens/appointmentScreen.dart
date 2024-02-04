@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
+// import 'package:clinic_appointment_app/screens/hospital_screen.dart';
+// import 'package:clinic_appointment_app/widgets/health_needs.dart';
+// import 'package:clinic_appointment_app/screens/appointment_screen.dart';
+// import 'package:clinic_appointment_app/screens/hospital_screen.dart';
+// import 'package:clinic_appointment_app/screens/covid_screen.dart';
+// import 'package:clinic_appointment_app/screens/more_health_needs_screen.dart';
+// Remove the unused import directive
+// import 'package:healthapp/screens/hospitalScreen.dart';
 
 class HealthNeeds extends StatelessWidget {
-  const HealthNeeds({super.key});
+  const HealthNeeds({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,26 +24,59 @@ class HealthNeeds extends StatelessWidget {
       children: List.generate(
         customIcons.length,
         (index) {
-          return Column(
-            children: [
-              Container(
-                width: 60,
-                height: 60,
-                padding: EdgeInsets.all(13),
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Theme.of(context)
-                      .colorScheme
-                      .primaryContainer
-                      .withOpacity(0.4),
+          return GestureDetector(
+            onTap: () {},
+            //   if (index == 0) {
+            //     Navigator.push(
+            //       context,
+            //       MaterialPageRoute(
+            //         builder: (context) => AppointmentScreen(),
+            //       ),
+            //     );
+            //   } else if (index == 1) {
+            //     Navigator.push(
+            //       context,
+            //       MaterialPageRoute(
+            //         builder: (context) => HospitalScreen,
+            //       ),
+            //     );
+            //   } else if (index == 2) {
+            //     Navigator.push(
+            //       context,
+            //       MaterialPageRoute(
+            //         builder: (context) => CovidScreen(),
+            //       ),
+            //     );
+            //   } else if (index == 3) {
+            //     Navigator.push(
+            //       context,
+            //       MaterialPageRoute(
+            //         builder: (context) => MoreHealthNeedsScreen(),
+            //       ),
+            //     );
+            //   }
+            // },
+            child: Column(
+              children: [
+                Container(
+                  width: 60,
+                  height: 60,
+                  padding: EdgeInsets.all(13),
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Theme.of(context)
+                        .colorScheme
+                        .primaryContainer
+                        .withOpacity(0.4),
+                  ),
+                  child: Image.asset(customIcons[index].icon),
                 ),
-                child: Image.asset(customIcons[index].icon),
-              ),
-              SizedBox(
-                height: 6,
-              ),
-              Text(customIcons[index].name)
-            ],
+                SizedBox(
+                  height: 6,
+                ),
+                Text(customIcons[index].name)
+              ],
+            ),
           );
         },
       ),

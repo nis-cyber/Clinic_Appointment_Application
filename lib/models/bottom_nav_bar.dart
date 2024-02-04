@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:healthapp/pages/home_page.dart';
-import 'package:healthapp/pages/appointment_page.dart';
-import 'package:healthapp/pages/profile_page.dart';
-import 'package:healthapp/pages/search_page.dart';
+// import 'package:healthapp/pages/home_page.dart';
+// import 'package:healthapp/pages/appointment_page.dart';
+// import 'package:healthapp/pages/profile_page.dart';
+// import 'package:healthapp/pages/search_page.dart';
 
 class BottomNavBar extends StatelessWidget {
   final Function(int) onTap;
@@ -34,9 +34,6 @@ class BottomNavBar extends StatelessWidget {
           icon: Icon(CupertinoIcons.person),
           label: "Profile",
         ),
-
-
-
       ],
     );
   }

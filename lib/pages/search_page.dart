@@ -3,7 +3,6 @@ import 'package:flutter/src/widgets/framework.dart';
 
 import '../models/doctor_model.dart';
 
-
 class SearchScreen extends StatefulWidget {
   const SearchScreen({Key? key}) : super(key: key);
 
@@ -41,6 +40,7 @@ class _SearchScreenState extends State<SearchScreen> {
               children: [
                 const Text('Search History', style: TextStyle(fontSize: 18)),
                 const SizedBox(height: 10),
+
                 // Display search history using ListView or other widgets
                 // Use ListTile or other widgets to show each search history entry
                 ListView.builder(
@@ -81,13 +81,7 @@ class _SearchScreenState extends State<SearchScreen> {
 
   // Fetch doctor list based on the search query
   void fetchDoctorList(String query) {
-
-
     // Implement your logic to fetch the doctor list based on the search query
     // Update the 'doctorList' and the UI accordingly
   }
 }
-
-
-
-

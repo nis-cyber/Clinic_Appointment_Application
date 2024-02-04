@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:healthapp/auth/data/auth_service.dart';
-import 'package:healthapp/auth/pages/login_page.dart';
-import 'package:healthapp/auth/pages/status_page.dart';
+import 'package:healthapp/features/auth/data/auth_service.dart';
+import 'package:healthapp/features/auth/pages/login_page.dart';
+import 'package:healthapp/features/auth/pages/status_page.dart';
 
 class SignupPage extends StatefulWidget {
   const SignupPage({super.key});
@@ -17,20 +16,27 @@ class _SignupPageState extends State<SignupPage> {
 
   Future<void> _register() async {
     await _authService.register(
-      _emailController.text,
-      _passwordController.text,
-      _fullNameController.text,
-      _addressController.text,
+      _emailController.text.trim(),
+      _passwordController.text.trim(),
+      _fullNameController.text.trim(),
+      _addressController.text.trim(),
     );
     Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => const StatusPage()));
+      context,
+      MaterialPageRoute(
+        builder: (constext) {
+          return StatusPage();
+        },
+      ),
+    );
   }
 
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _fullNameController = TextEditingController();
   final TextEditingController _addressController = TextEditingController();
-
+  final TextEditingController _confirmPasswordController =
+      TextEditingController();
 
   @override
   void dispose() {
@@ -38,6 +44,21 @@ class _SignupPageState extends State<SignupPage> {
     _passwordController.dispose();
     _fullNameController.dispose();
     super.dispose();
+  }
+
+  bool _isPasswordVisible = false;
+  bool _isConfirmPasswordVisible = false;
+
+  void _togglePasswordVisibility() {
+    setState(() {
+      _isPasswordVisible = !_isPasswordVisible;
+    });
+  }
+
+  void _toggleConfirmPasswordVisibility() {
+    setState(() {
+      _isConfirmPasswordVisible = !_isConfirmPasswordVisible;
+    });
   }
 
   @override
@@ -56,7 +77,7 @@ class _SignupPageState extends State<SignupPage> {
               const SizedBox(height: 64),
               TextField(
                 controller: _fullNameController,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                     hintText: "Full Name",
                     hintStyle: TextStyle(fontFamily: "Montserrat"),
                     border: OutlineInputBorder(
@@ -69,7 +90,7 @@ class _SignupPageState extends State<SignupPage> {
               const SizedBox(height: 24),
               TextField(
                 controller: _emailController,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                     hintText: "Email",
                     hintStyle: TextStyle(fontFamily: "Montserrat"),
                     border: OutlineInputBorder(
@@ -82,7 +103,7 @@ class _SignupPageState extends State<SignupPage> {
               const SizedBox(height: 24),
               TextField(
                 controller: _addressController,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                     hintText: "Address",
                     hintStyle: TextStyle(fontFamily: "Montserrat"),
                     border: OutlineInputBorder(
@@ -96,7 +117,7 @@ class _SignupPageState extends State<SignupPage> {
               TextField(
                 controller: _passwordController,
                 obscureText: true,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                     hintText: "Password",
                     hintStyle: TextStyle(fontFamily: "Montserrat"),
                     suffixIcon: Icon(
@@ -112,9 +133,10 @@ class _SignupPageState extends State<SignupPage> {
                         ))),
               ),
               const SizedBox(height: 24),
-              const TextField(
+              TextField(
+                controller: _confirmPasswordController,
                 obscureText: true,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                     hintText: "Confirm Password",
                     hintStyle: TextStyle(fontFamily: "Montserrat"),
                     suffixIcon: Icon(
@@ -167,12 +189,12 @@ class _SignupPageState extends State<SignupPage> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     )),
-                child: Row(
+                child: const Row(
                   // ignore: prefer_const_literals_to_create_immutables
                   children: [
-                    const Icon(FontAwesomeIcons.google, color: Colors.red),
-                    const SizedBox(width: 101),
-                    const Text(
+                    Icon(FontAwesomeIcons.google, color: Colors.red),
+                    SizedBox(width: 101),
+                    Text(
                       "Google",
                       style: TextStyle(
                         color: Colors.red,
@@ -191,15 +213,15 @@ class _SignupPageState extends State<SignupPage> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     )),
-                child: Row(
+                child: const Row(
                   // ignore: prefer_const_literals_to_create_immutables
                   children: [
-                    const Icon(
+                    Icon(
                       FontAwesomeIcons.facebook,
                       color: Colors.blue,
                     ),
-                    const SizedBox(width: 101),
-                    const Text(
+                    SizedBox(width: 101),
+                    Text(
                       "Facebook",
                       style: TextStyle(
                         color: Colors.blue,
@@ -215,11 +237,11 @@ class _SignupPageState extends State<SignupPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text('Already registered?'),
+                  Text('Already registered?'),
                   TextButton(
                       onPressed: () {
                         Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => const LoginPage()));
+                            builder: (context) => LoginPage()));
                       },
                       child: const Text(
                         "Login",

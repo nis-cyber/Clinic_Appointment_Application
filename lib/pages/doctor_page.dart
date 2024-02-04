@@ -7,7 +7,7 @@ class DoctorPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Doctor Page'),
+        title: Text('Doctor Details'),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
@@ -42,73 +42,72 @@ class DoctorPage extends StatelessWidget {
                       width: 30,
                     ),
                     Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Text(
-                            'Dr. Pitambar Thakur',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20,
-                              color: Color(0xff1E1C61),
-                            ),
+                        child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text(
+                          'Dr. Pitambar Thakur',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                            color: Color(0xff1E1C61),
                           ),
-                          SizedBox(
-                            height: 5,
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Text(
+                          'Gerneral Physician',
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            color: Color(0xff1E1C61).withOpacity(0.7),
                           ),
-                          Text(
-                            'General Physician',
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                            style: TextStyle(
-                              color: Color(0xff1E1C61).withOpacity(0.7),
-                            ),
+                        ),
+                        SizedBox(
+                          height: 3,
+                        ),
+                        Text(
+                          'MD',
+                          style: TextStyle(
+                            color: Color(0xff1E1C61).withOpacity(0.7),
                           ),
-                          SizedBox(
-                            height: 3,
+                        ),
+                        SizedBox(
+                          height: 3,
+                        ),
+                        Text(
+                          'BNC Hospital',
+                          style: TextStyle(
+                            color: Color(0xff1E1C61).withOpacity(0.7),
                           ),
-                          Text(
-                            'MD, MBBS, DM',
-                            style: TextStyle(
-                              color: Color(0xff1E1C61).withOpacity(0.7),
-                            ),
-                          ),
-                          SizedBox(
-                            height: 3,
-                          ),
-                          Text(
-                            'BNC Hospital',
-                            style: TextStyle(
-                              color: Color(0xff1E1C61).withOpacity(0.7),
-                            ),
-                          ),
-                          SizedBox(
-                            height: 3,
-                          ),
-                          Row(
-                            children: <Widget>[
-                              Text(
-                                "Speaks - ",
-                                style: TextStyle(
-                                  color: Color(0xff1E1C61).withOpacity(0.7),
-                                ),
+                        ),
+                        SizedBox(
+                          height: 3,
+                        ),
+                        Row(
+                          children: <Widget>[
+                            Text(
+                              "Speaks - ",
+                              style: TextStyle(
+                                color: Color(0xff1E1C61).withOpacity(0.7),
                               ),
-                              Text(
-                                'English',
-                                style: TextStyle(
-                                  color: Colors.blue,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                            ),
+                            Text(
+                              'English',
+                              style: TextStyle(
+                                color: Colors.blue,
+                                fontWeight: FontWeight.bold,
                               ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    )),
                   ],
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 50,
                 ),
                 Text(
                   'About Doctor',
@@ -122,7 +121,7 @@ class DoctorPage extends StatelessWidget {
                   height: 10,
                 ),
                 Text(
-                  'We need to add about doctor here',
+                  'We need to Talk about doctor here ',
                   style: TextStyle(
                     height: 1.6,
                     fontWeight: FontWeight.w600,
@@ -144,18 +143,17 @@ class DoctorPage extends StatelessWidget {
                   height: 2,
                 ),
                 Text(
-                  '28th May, 2021',
+                  'Today',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 14,
-                    color: Color(0xff1E1C61).withOpacity(0.7),
+                    color: Color(0xff1E1C61),
                   ),
                 ),
                 SizedBox(
-                  height : 2,
+                  height: 2,
                 ),
                 //Upcoming schedule
-
                 //Book appointment
                 ElevatedButton(
                   child: Text('Book Appointment'),
@@ -163,17 +161,6 @@ class DoctorPage extends StatelessWidget {
                 ),
                 SizedBox(
                   height: 2,
-                ),
-
-
-
-
-                //Back button
-                ElevatedButton(
-                  child: Text('Back'),
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
                 ),
               ],
             ),
