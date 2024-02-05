@@ -1,13 +1,10 @@
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:healthapp/pages/doctor_page.dart';
 import 'package:healthapp/pages/notification_page.dart';
 import 'package:healthapp/widgets/health_needs.dart';
 import 'package:healthapp/widgets/nearby_doctor.dart';
 import 'package:healthapp/widgets/upcoming_card.dart';
-
-
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:ionicons/ionicons.dart';
 
 class HomePage extends StatefulWidget {
@@ -16,6 +13,9 @@ class HomePage extends StatefulWidget {
   @override
   State<HomePage> createState() => _HomePageState();
 }
+
+final user = FirebaseAuth.instance.currentUser;
+final name = user?.displayName ?? 'User';
 
 class _HomePageState extends State<HomePage> {
   int _currentIndex = 0;
@@ -30,7 +30,7 @@ class _HomePageState extends State<HomePage> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text("Hi, Nishant!"),
+                Text("Hi, $name!"),
                 Text(
                   'How are you feeling today?',
                   style: Theme.of(context).textTheme.bodySmall,
@@ -42,9 +42,8 @@ class _HomePageState extends State<HomePage> {
         actions: [
           IconButton(
               onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(builder: (_)=> NotificationPage(
-
-                )));
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (_) => NotificationPage()));
               },
               icon: const Icon(Ionicons.notifications_outline)),
           IconButton(
@@ -74,13 +73,14 @@ class _HomePageState extends State<HomePage> {
               style: Theme.of(context).textTheme.headline6,
             ),
             trailing: InkWell(
-              onTap: (){
-                Navigator.of(context).push(MaterialPageRoute(builder: (_)=> DoctorPage(
-
-                )));
+              onTap: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (_) => DoctorPage()));
               },
-              child: Icon(Icons.arrow_forward_ios,
-              size: 18,),
+              child: Icon(
+                Icons.arrow_forward_ios,
+                size: 18,
+              ),
             ),
           ),
           const SizedBox(height: 15),

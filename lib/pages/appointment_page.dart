@@ -116,11 +116,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:healthapp/models/doctor_model.dart';
-import 'doctorDetail_page.dart';
 
 class AppointmentPage extends StatefulWidget {
+  const AppointmentPage({super.key});
+
   @override
-  _AppointmentPageState createState() => _AppointmentPageState();
+  State<AppointmentPage> createState() => _AppointmentPageState();
 }
 
 class _AppointmentPageState extends State<AppointmentPage> {

@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:healthapp/features/auth/data/auth_service.dart';
 import 'package:healthapp/models/profile_model.dart';
 
 class ProfilePage extends StatefulWidget {
