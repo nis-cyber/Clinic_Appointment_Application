@@ -16,7 +16,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.android,
   );
-  runApp(ProviderScope(child: MyApp()));
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 final GlobalKey<NavigatorState> globalNavigator = GlobalKey<NavigatorState>();
@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
                 Theme.of(context).textTheme),
             useMaterial3: true,
           ),
-          home: StatusPage(),
+          home: const StatusPage(),
           navigatorKey: globalNavigator,
         );
       },
