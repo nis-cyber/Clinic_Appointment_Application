@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:healthapp/Admin/features/auth/pages/clinic_register_page.dart';
+import 'package:healthapp/Admin/features/auth/services/clinic_service.dart';
 
 class ClinicAuthScreen extends StatefulWidget {
   @override
@@ -6,6 +8,26 @@ class ClinicAuthScreen extends StatefulWidget {
 }
 
 class _ClinicAuthScreenState extends State<ClinicAuthScreen> {
+  final _formKey = GlobalKey<FormState>();
+  final _clinicNameController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+  final ClinicAuthService _authService = ClinicAuthService();
+
+  void _signIn() async {
+    try {
+      await _authService.login(
+        _emailController.text,
+        _passwordController.text,
+      );
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (context) => ClinicAuthScreen()));
+      // Navigate to the next screen after successful sign in
+    } catch (e) {
+      // Handle sign in error
+    }
+  }
+
   bool _isObscure = true;
 
   @override
@@ -38,10 +60,25 @@ class _ClinicAuthScreenState extends State<ClinicAuthScreen> {
                   color: Colors.white,
                 ),
               ),
+              // SizedBox(height: 30.0),
+              // TextFormField(
+              //   controller: _clinicNameController,
+              //   decoration: InputDecoration(
+              //     labelText: 'Name',
+              //     prefixIcon: Icon(Icons.person, color: Colors.blue),
+              //     filled: true,
+              //     fillColor: Colors.white,
+              //     border: OutlineInputBorder(
+              //       borderRadius: BorderRadius.circular(10.0),
+              //       borderSide: BorderSide.none,
+              //     ),
+              //   ),
+              // ),
               SizedBox(height: 30.0),
               TextFormField(
+                controller: _emailController,
                 decoration: InputDecoration(
-                  labelText: 'Username',
+                  labelText: 'Email',
                   prefixIcon: Icon(Icons.person, color: Colors.blue),
                   filled: true,
                   fillColor: Colors.white,
@@ -53,6 +90,7 @@ class _ClinicAuthScreenState extends State<ClinicAuthScreen> {
               ),
               SizedBox(height: 20.0),
               TextFormField(
+                controller: _passwordController,
                 obscureText: _isObscure,
                 decoration: InputDecoration(
                   labelText: 'Password',
@@ -78,9 +116,7 @@ class _ClinicAuthScreenState extends State<ClinicAuthScreen> {
               ),
               SizedBox(height: 20.0),
               ElevatedButton(
-                onPressed: () {
-                  // Implement authentication logic here
-                },
+                onPressed: _signIn,
                 child: Text('Login'),
                 style: ElevatedButton.styleFrom(
                   primary: Colors.blue,
@@ -90,6 +126,23 @@ class _ClinicAuthScreenState extends State<ClinicAuthScreen> {
                   ),
                 ),
               ),
+
+              SizedBox(
+                height: 20,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text("Don't have an account?"),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => ClinicRegisterPage()));
+                    },
+                    child: Text('Signup'),
+                  ),
+                ],
+              )
             ],
           ),
         ),

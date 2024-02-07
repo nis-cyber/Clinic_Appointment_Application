@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:healthapp/features/auth/data/auth_data.dart';
-import 'package:healthapp/features/auth/pages/signup_page.dart';
+import 'package:healthapp/User/features/auth/data/auth_data.dart';
+import 'package:healthapp/User/features/auth/pages/signup_page.dart';
 import 'package:healthapp/helper/helper_function.dart';
 
 class LoginPage extends StatefulWidget {

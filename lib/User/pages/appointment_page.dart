@@ -115,7 +115,7 @@
 // here i the follwing up code works for booking an appointment in which it show book an aapoinmwnt now below down the here a view
 
 import 'package:flutter/material.dart';
-import 'package:healthapp/models/doctor_model.dart';
+import 'package:healthapp/User/models/doctor_model.dart';
 
 class AppointmentPage extends StatefulWidget {
   const AppointmentPage({super.key});

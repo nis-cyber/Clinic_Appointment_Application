@@ -1,14 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:healthapp/Admin/features/auth/services/clinic_service.dart';
+import 'package:healthapp/status_page.dart';
 
 class ClinicHomeScreen extends StatelessWidget {
+  final ClinicAuthService _authService =
+      ClinicAuthService(); // Create an instance of AuthService
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          IconButton(
+            icon: Icon(Icons.logout),
+            onPressed: () {
+              _authService.signOut();
+              Navigator.of(context).pushReplacement(
+                MaterialPageRoute(builder: (context) => StatusPage()),
+              );
+            },
+          ),
+        ],
         title: Text('Clinic Home Screen '),
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(8.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -308,3 +324,5 @@ class CheckoutItem extends StatelessWidget {
     );
   }
 }
+// below there is the bottom navbar and threre are five icons so i think i should route for each icon
+

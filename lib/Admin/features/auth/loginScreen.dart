@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:healthapp/Admin/features/auth/pages/clinic_login_page.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -12,7 +13,7 @@ class _LoginScreenState extends State<LoginScreen> {
     if (_selectedRole == 'patient') {
       Navigator.pushReplacementNamed(context, '/patient_home');
     } else if (_selectedRole == 'doctor') {
-      Navigator.pushReplacementNamed(context, '/doctor_home');
+      Navigator.pushReplacementNamed(context, '/doctor_login');
     }
   }
 
@@ -83,14 +84,16 @@ class _LoginScreenState extends State<LoginScreen> {
                     ElevatedButton.icon(
                       icon: Icon(Icons.medical_services, color: Colors.white),
                       label: Text(
-                        'Doctor',
+                        'Clinic',
                         style: TextStyle(fontSize: 20),
                       ),
                       onPressed: () {
-                        setState(() {
-                          _selectedRole = 'Clinic';
-                        });
-                        _navigateToHomeScreen();
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ClinicAuthScreen(),
+                          ),
+                        );
                       },
                       style: ElevatedButton.styleFrom(
                         primary: Color(0xff281537),
@@ -110,3 +113,7 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 }
+// i need to route this page when i clinic then it shoul route to clininc homepage and when i am patient it should route to patient homepage
+// i need to add the route to the patient and clinic homepage
+// while clincking in clinic it should route to clinic authenthication page
+// 

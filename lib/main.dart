@@ -2,20 +2,21 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:healthapp/features/auth/pages/status_page.dart';
-import 'package:healthapp/models/bottom_nav_bar.dart';
-import 'package:healthapp/pages/appointment_page.dart';
-import 'package:healthapp/pages/home_page.dart';
-import 'package:healthapp/pages/profile_page.dart';
-import 'package:healthapp/pages/search_page.dart';
+import 'package:healthapp/status_page.dart';
+import 'package:healthapp/User/models/bottom_nav_bar.dart';
+import 'package:healthapp/User/pages/appointment_page.dart';
+import 'package:healthapp/User/pages/home_page.dart';
+import 'package:healthapp/User/pages/profile_page.dart';
+import 'package:healthapp/User/pages/search_page.dart';
 import 'firebase_options.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.android,
   );
-  runApp(MyApp());
+  runApp(ProviderScope(child: MyApp()));
 }
 
 final GlobalKey<NavigatorState> globalNavigator = GlobalKey<NavigatorState>();

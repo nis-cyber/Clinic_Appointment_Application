@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:healthapp/features/auth/data/auth_service.dart';
-import 'package:healthapp/features/auth/pages/login_page.dart';
-import 'package:healthapp/features/auth/pages/status_page.dart';
+import 'package:healthapp/User/features/auth/data/auth_service.dart';
+import 'package:healthapp/User/features/auth/pages/login_page.dart';
+import 'package:healthapp/status_page.dart';
 
 class SignupPage extends StatefulWidget {
   const SignupPage({super.key});

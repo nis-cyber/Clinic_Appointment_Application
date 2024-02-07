@@ -166,7 +166,7 @@ class _ReportsPageState extends State<ReportsPage> {
   Widget _buildReportHistory() {
     return Container(
       padding: EdgeInsets.all(16.0),
-      child: Column(
+      child: const Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(

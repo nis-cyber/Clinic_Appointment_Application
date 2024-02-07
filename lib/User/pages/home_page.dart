@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:healthapp/pages/doctor_page.dart';
-import 'package:healthapp/pages/notification_page.dart';
+import 'package:healthapp/User/pages/doctor_page.dart';
+import 'package:healthapp/User/pages/notification_page.dart';
 import 'package:healthapp/widgets/health_needs.dart';
 import 'package:healthapp/widgets/nearby_doctor.dart';
 import 'package:healthapp/widgets/upcoming_card.dart';
