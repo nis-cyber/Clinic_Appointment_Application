@@ -115,6 +115,7 @@
 // here i the follwing up code works for booking an appointment in which it show book an aapoinmwnt now below down the here a view
 
 import 'package:flutter/material.dart';
+import 'package:healthapp/Admin/features/doctors/services/doctor_model.dart';
 import 'package:healthapp/User/models/doctor_model.dart';
 
 class AppointmentPage extends StatefulWidget {
@@ -125,30 +126,27 @@ class AppointmentPage extends StatefulWidget {
 }
 
 class _AppointmentPageState extends State<AppointmentPage> {
-  List<DoctorModel> nearbyDoctors = [
-    DoctorModel(
+  List<DoctorDataModel> nearbyDoctors = [
+    DoctorDataModel(
       name: 'Dr. John Doe',
-      position: 'Cardiologist',
-      profile: 'assets/images/doctor1.png',
-      averageReview: 4,
-      totalReview: 100,
-      totalRewiew: 100,
+      specialty: 'Cardiologist',
+      contactInfo: '123-456-7890',
+      workingHours: '9:00 AM - 5:00 PM',
+      doctorImage: 'assets/images/doctor1.png',
     ),
-    DoctorModel(
+    DoctorDataModel(
       name: 'Dr. Jane Smith',
-      position: 'Dermatologist',
-      profile: 'assets/images/doctor2.png',
-      averageReview: 4,
-      totalReview: 80,
-      totalRewiew: 80,
+      specialty: 'Dermatologist',
+      contactInfo: '123-456-7890',
+      workingHours: '9:00 AM - 5:00 PM',
+      doctorImage: 'assets/images/doctor2.png',
     ),
-    DoctorModel(
+    DoctorDataModel(
       name: 'Dr. Alex Johnson',
-      position: 'Pediatrician',
-      profile: 'assets/images/doctor3.png',
-      averageReview: 4,
-      totalReview: 120,
-      totalRewiew: 120,
+      specialty: 'Pediatrician',
+      contactInfo: '123-456-7890',
+      workingHours: '9:00 AM - 5:00 PM',
+      doctorImage: 'assets/images/doctor3.png',
     ),
 
     // Add more doctors here
@@ -182,7 +180,7 @@ class _AppointmentPageState extends State<AppointmentPage> {
 }
 
 class DoctorCard extends StatelessWidget {
-  final DoctorModel doctor;
+  final DoctorDataModel doctor;
   final VoidCallback onTap;
 
   DoctorCard({required this.doctor, required this.onTap});
@@ -193,10 +191,10 @@ class DoctorCard extends StatelessWidget {
       margin: EdgeInsets.all(16),
       child: ListTile(
         leading: CircleAvatar(
-          backgroundImage: AssetImage(doctor.profile),
+          backgroundImage: AssetImage(doctor.doctorImage),
         ),
         title: Text(doctor.name),
-        subtitle: Text(doctor.position),
+        subtitle: Text(doctor.specialty),
         trailing: ElevatedButton(
           onPressed: onTap,
           child: Text('View'),
@@ -207,7 +205,7 @@ class DoctorCard extends StatelessWidget {
 }
 
 class DoctorDetailPage extends StatelessWidget {
-  final DoctorModel doctor;
+  final DoctorDataModel doctor;
 
   DoctorDetailPage({required this.doctor});
 
@@ -222,7 +220,7 @@ class DoctorDetailPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             CircleAvatar(
-              backgroundImage: AssetImage(doctor.profile),
+              backgroundImage: AssetImage(doctor.name),
               radius: 80,
             ),
             SizedBox(height: 16),
@@ -232,19 +230,24 @@ class DoctorDetailPage extends StatelessWidget {
             ),
             SizedBox(height: 8),
             Text(
-              doctor.position,
+              doctor.specialty,
               style: TextStyle(fontSize: 18),
             ),
             SizedBox(height: 8),
             Text(
-              'Average Review: ${doctor.averageReview}',
+              'Contact Information: ${doctor.contactInfo}',
               style: TextStyle(fontSize: 16),
             ),
             SizedBox(height: 8),
             Text(
-              'Total Reviews: ${doctor.totalRewiew}',
+              'Working Hours: ${doctor.workingHours}',
               style: TextStyle(fontSize: 16),
             ),
+            SizedBox(height: 8),
+            Text(
+              'Doctor Image: ${doctor.doctorImage}',
+              style: TextStyle(fontSize: 16),
+            )
           ],
         ),
       ),

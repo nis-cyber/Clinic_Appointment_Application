@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:healthapp/User/features/auth/data/auth_data.dart';
 import 'package:healthapp/User/features/auth/pages/signup_page.dart';
 import 'package:healthapp/helper/helper_function.dart';
+import 'package:healthapp/status_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({
@@ -33,7 +34,9 @@ class _LoginPageState extends State<LoginPage> {
             email: _emailController.text.trim(),
             password: _passwordController.text.trim())
         .then((value) {
-      Navigator.of(context).pop();
+      Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+        return const StatusPage();
+      }));
       displayMessageToUser(value, context);
     });
   }
@@ -151,12 +154,12 @@ class _LoginPageState extends State<LoginPage> {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       )),
-                  child: Row(
+                  child: const Row(
                     // ignore: prefer_const_literals_to_create_immutables
                     children: [
-                      const Icon(FontAwesomeIcons.google, color: Colors.red),
-                      const SizedBox(width: 101),
-                      const Text(
+                      Icon(FontAwesomeIcons.google, color: Colors.red),
+                      SizedBox(width: 101),
+                      Text(
                         "Google",
                         style: TextStyle(
                           color: Colors.red,

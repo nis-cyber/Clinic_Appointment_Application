@@ -49,7 +49,7 @@ class NearbyDoctors extends StatelessWidget {
                       ),
                     ),
                     Text(
-                        "${nearbyDoctors[index].totalRewiew.toString()} Reviews")
+                        "${nearbyDoctors[index].totalReview.toString()} Reviews")
                   ],
                 )
               ],
