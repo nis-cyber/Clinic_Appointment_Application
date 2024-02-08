@@ -7,11 +7,11 @@ class DoctorPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Doctor Details'),
+        title: const Text('Doctor Details'),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
-        child: Icon(
+        child: const Icon(
           Icons.near_me,
           color: Colors.white,
           size: 22.5,
@@ -20,32 +20,32 @@ class DoctorPage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Container(
           width: double.infinity,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             color: Color(0xffF9F9F9),
             borderRadius: BorderRadius.vertical(
               top: Radius.circular(40),
             ),
           ),
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 40),
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 40),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    CircleAvatar(
+                    const CircleAvatar(
                       backgroundImage: AssetImage('assets/doctor_1.jpg'),
                       radius: 30,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 30,
                     ),
                     Expanded(
                         child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        Text(
+                        const Text(
                           'Dr. Pitambar Thakur',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
@@ -53,7 +53,7 @@ class DoctorPage extends StatelessWidget {
                             color: Color(0xff1E1C61),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 5,
                         ),
                         Text(
@@ -64,7 +64,7 @@ class DoctorPage extends StatelessWidget {
                             color: Color(0xff1E1C61).withOpacity(0.7),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 3,
                         ),
                         Text(
@@ -73,7 +73,7 @@ class DoctorPage extends StatelessWidget {
                             color: Color(0xff1E1C61).withOpacity(0.7),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 3,
                         ),
                         Text(
@@ -82,7 +82,7 @@ class DoctorPage extends StatelessWidget {
                             color: Color(0xff1E1C61).withOpacity(0.7),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 3,
                         ),
                         Row(
@@ -93,7 +93,7 @@ class DoctorPage extends StatelessWidget {
                                 color: Color(0xff1E1C61).withOpacity(0.7),
                               ),
                             ),
-                            Text(
+                            const Text(
                               'English',
                               style: TextStyle(
                                 color: Colors.blue,
@@ -106,10 +106,10 @@ class DoctorPage extends StatelessWidget {
                     )),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 50,
                 ),
-                Text(
+                const Text(
                   'About Doctor',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
@@ -117,7 +117,7 @@ class DoctorPage extends StatelessWidget {
                     color: Color(0xff1E1C61),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Text(
@@ -128,10 +128,10 @@ class DoctorPage extends StatelessWidget {
                     color: Color(0xff1E1C61).withOpacity(0.7),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
-                Text(
+                const Text(
                   'Upcoming Schedule',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
@@ -139,10 +139,10 @@ class DoctorPage extends StatelessWidget {
                     color: Color(0xff1E1C61),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 2,
                 ),
-                Text(
+                const Text(
                   'Today',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
@@ -150,16 +150,16 @@ class DoctorPage extends StatelessWidget {
                     color: Color(0xff1E1C61),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 2,
                 ),
                 //Upcoming schedule
                 //Book appointment
                 ElevatedButton(
-                  child: Text('Book Appointment'),
+                  child: const Text('Book Appointment'),
                   onPressed: () {},
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 2,
                 ),
               ],

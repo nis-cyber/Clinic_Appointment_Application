@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:healthapp/User/features/search/search_screen.dart';
 import 'package:healthapp/User/pages/doctor_page.dart';
 import 'package:healthapp/User/pages/notification_page.dart';
 import 'package:healthapp/widgets/health_needs.dart';
@@ -47,7 +48,11 @@ class _HomePageState extends State<HomePage> {
               },
               icon: const Icon(Ionicons.notifications_outline)),
           IconButton(
-              onPressed: () {}, icon: const Icon(Ionicons.search_outline))
+              onPressed: () {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (_) => const SearchScreen()));
+              },
+              icon: const Icon(Ionicons.search_outline))
         ],
       ),
       body: ListView(
@@ -74,8 +79,8 @@ class _HomePageState extends State<HomePage> {
             ),
             trailing: InkWell(
               onTap: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (_) => DoctorPage()));
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (_) => const DoctorPage()));
               },
               child: Icon(
                 Icons.arrow_forward_ios,
