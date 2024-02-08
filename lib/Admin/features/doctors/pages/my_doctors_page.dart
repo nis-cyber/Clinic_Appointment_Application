@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:healthapp/Admin/features/doctors/pages/add_doctors_page.dart';
 import 'package:healthapp/Admin/features/doctors/pages/my_doctor_detail_page.dart';
-import 'package:healthapp/Admin/features/doctors/services/doctor_model.dart';
 import 'package:healthapp/Admin/features/doctors/services/doctor_provider.dart';
-import 'package:healthapp/User/pages/appointment_page.dart';
 
 class MyDoctorPage extends ConsumerStatefulWidget {
   const MyDoctorPage({Key? key}) : super(key: key);

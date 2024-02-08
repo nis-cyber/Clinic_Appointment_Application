@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:healthapp/Admin/features/auth/pages/clinic_login_page.dart';
+import 'package:healthapp/User/features/auth/pages/login_page.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -67,10 +68,16 @@ class _LoginScreenState extends State<LoginScreen> {
                         style: TextStyle(fontSize: 20),
                       ),
                       onPressed: () {
-                        setState(() {
-                          _selectedRole = 'patient';
-                        });
-                        _navigateToHomeScreen();
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => LoginPage(),
+                          ),
+                        );
+                        // setState(() {
+                        //   _selectedRole = 'patient';
+                        // });
+                        // _navigateToHomeScreen();
                       },
                       style: ElevatedButton.styleFrom(
                         primary: Color(0xff281537),

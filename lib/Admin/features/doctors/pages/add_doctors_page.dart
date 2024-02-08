@@ -19,6 +19,7 @@ class _AddDoctorScreenState extends State<AddDoctorScreen> {
       TextEditingController();
   final TextEditingController doctorWorkingHoursController =
       TextEditingController();
+  final ImagePicker picker = ImagePicker();
 
   // Function to handle image selection
   Future<void> _selectImage() async {

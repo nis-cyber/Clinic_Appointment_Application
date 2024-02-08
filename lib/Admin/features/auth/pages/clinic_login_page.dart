@@ -3,6 +3,8 @@ import 'package:healthapp/Admin/features/auth/pages/clinic_register_page.dart';
 import 'package:healthapp/Admin/features/auth/services/clinic_service.dart';
 
 class ClinicAuthScreen extends StatefulWidget {
+  const ClinicAuthScreen({super.key});
+
   @override
   _ClinicAuthScreenState createState() => _ClinicAuthScreenState();
 }

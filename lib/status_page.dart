@@ -3,10 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:healthapp/Admin/features/auth/loginScreen.dart';
 import 'package:healthapp/Admin/widgets/clinic_bottom_nav_bar.dart';
-import 'package:healthapp/Admin/features/dashboard/clinic_home_screen.dart';
 import 'package:healthapp/main.dart';
-
-// ...
 
 class StatusPage extends StatelessWidget {
   const StatusPage({super.key});

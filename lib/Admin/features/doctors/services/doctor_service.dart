@@ -20,6 +20,7 @@ class DoctorDataSource {
         'doctorContactInfo': doctorContactInfo,
         'doctorWorkingHours': doctorWorkingHours,
         'postCreatedAt': DateTime.now().microsecondsSinceEpoch.toString(),
+        'doctorImage': doctorImage,
       });
       return 'Doctor Added';
     } on FirebaseException catch (err) {
@@ -33,8 +34,9 @@ class DoctorDataSource {
       return DoctorDataModel(
         name: doc['doctorName'],
         specialty: doc['doctorSpecialty'],
-        contactInfo: doc['doctorWorkingHours'],
+        contactInfo: doc['doctorContactInfo'],
         workingHours: doc['doctorWorkingHours'],
+        doctorImage: doc['doctorImage'],
       );
     }).toList();
   }
