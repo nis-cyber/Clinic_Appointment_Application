@@ -52,7 +52,7 @@ class _SearchScreenState extends State<SearchScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(155, 95, 138, 238),
+      backgroundColor: const Color.fromARGB(155, 95, 138, 238),
       appBar: AppBar(elevation: 0.0),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -81,7 +81,7 @@ class _SearchScreenState extends State<SearchScreen> {
             const SizedBox(height: 20),
             Expanded(
               child: updatedList.isEmpty
-                  ? Center(
+                  ? const Center(
                       child: Text(
                         'No doctors found',
                         style: TextStyle(fontWeight: FontWeight.bold),

@@ -1,16 +1,22 @@
+//so this code is fine
+// but the problem is that the DoctorDataModel is not defined in the file lib/Admin/features/doctors/services/doctor_model.dart
+// so to fix this issue we need to define the DoctorDataModel in the file lib/Admin/features/doctors/services/doctor_model.dart
+// so the final code will be:
+// import 'package:cloud_firestore/cloud_firestore.dart';
+
 class DoctorDataModel {
   final String name;
   final String specialty;
   final String contactInfo;
   final String workingHours;
-  final String doctorImage; // Define the missing variable here
+  String? doctorImage; // Define the missing variable here
 
   DoctorDataModel({
     required this.name,
     required this.specialty,
     required this.contactInfo,
     required this.workingHours,
-    required this.doctorImage, // Add the missing variable here
+    this.doctorImage, // Add the missing variable here
   });
 
   factory DoctorDataModel.fromJson(Map<String, dynamic> json) {

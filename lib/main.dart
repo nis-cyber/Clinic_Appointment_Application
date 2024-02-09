@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:healthapp/status_page.dart';
 import 'package:healthapp/User/models/bottom_nav_bar.dart';
-import 'package:healthapp/User/pages/appointment_page.dart';
+import 'package:healthapp/User/features/appointment/appointment_page.dart';
 import 'package:healthapp/User/pages/home_page.dart';
 import 'package:healthapp/User/pages/profile_page.dart';
 import 'package:healthapp/User/pages/search_page.dart';

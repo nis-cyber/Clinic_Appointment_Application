@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:healthapp/Admin/features/doctors/services/doctor_model.dart';
-import 'package:healthapp/User/pages/appointment_page.dart';
+import 'package:healthapp/User/features/appointment/appointment_page.dart';
 import 'package:healthapp/User/services/doctor_Services.dart';
 // Assuming this is the doctor details page file
 
